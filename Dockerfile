@@ -2,7 +2,7 @@
 FROM alpine:3.4
 
 # File Author / Maintainer
-LABEL authors="Zouhir Chahoud <zouhir@zouhir.org>"
+LABEL authors="Alexis Vassilopoulos <alexis.vassilopoulos@gmail.com>"
 
 # Update & install required packages
 RUN apk add --update nodejs bash git

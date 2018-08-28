@@ -35,7 +35,12 @@ app.use(
 app.use(middleware({ config }));
 
 // api router
-app.use('/api', api({ config }));
+app.use('/api', api());
+//  custom 404 Not Found
+app.use((req, res) => {
+  res.status(404).send({ url: req.originalUrl + ' not found' });
+});
+
 app.server.listen(process.env.PORT || config.port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server running on port ${app.server.address().port}`);

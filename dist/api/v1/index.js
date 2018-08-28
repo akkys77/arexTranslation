@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _express = require('express');
 
-var _v = require('./v1');
+var _translate = require('./translate');
 
-var _v2 = _interopRequireDefault(_v);
+var _translate2 = _interopRequireDefault(_translate);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16,13 +16,14 @@ exports.default = function () {
   var api = (0, _express.Router)();
 
   api.get('/', function (req, res) {
-    res.json({
-      currentVersion: 'v1',
-      path: 'api/v1'
-    });
+    res.json({ version: 'v1' });
   });
 
-  api.use('/v1', (0, _v2.default)());
+  api.post('/translate', _translate2.default);
+
+  api.get('/translate', function (req, res) {
+    res.status(400).json({ message: 'You should use POST not GET' });
+  });
 
   return api;
 };
