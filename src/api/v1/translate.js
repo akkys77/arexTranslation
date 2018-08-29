@@ -1,10 +1,21 @@
 export default (req, res) => {
   const str = req.body.textToTranslate;
   if (!str) {
-    res.status(400).json({ message: 'missing text to translate in Pig Latin' });
+    if (!req.body.hasOwnProperty('textToTranslate')) {
+      res.status(400).json({
+        message:
+          'request should be JSON object with the "textToTranslate" property containing the text to translate'
+      });
+    } else {
+      res
+        .status(400)
+        .json({ message: 'missing text to translate in Pig Latin' });
+    }
   }
-  let result = processString(str);
-  res.status(200).json({ translatedString: result });
+  else{
+    let result = processString(str);
+    res.status(200).json({ translatedString: result });
+  }
 };
 
 // Rule for both upper and lower case vowels

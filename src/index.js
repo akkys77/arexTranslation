@@ -1,10 +1,12 @@
 import http from 'http';
 import express from 'express';
+import path from 'path';
 
 // 3rd PArty modules
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import favicon from 'serve-favicon';
 
 // Own modules
 import config from './config';
@@ -33,6 +35,9 @@ app.use(
 
 // internal middleware
 app.use(middleware({ config }));
+
+// serve favicon
+app.use(favicon(path.join(__dirname, '/', 'favicon.png')));
 
 // api router
 app.use('/api', api());

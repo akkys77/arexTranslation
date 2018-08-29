@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/config.js"],"names":["config","port","bodyLimit","corsHeaders"],"mappings":";;;;;AAAA,IAAMA,SAAS;AACbC,QAAM,IADO;AAEbC,aAAW,OAFE;AAGbC,eAAa,CAAC,MAAD;AAHA,CAAf;kBAKeH,M","file":"config.js","sourcesContent":["const config = {\n  port: 8080,\n  bodyLimit: '100kb',\n  corsHeaders: ['Link']\n};\nexport default config;\n"]}
