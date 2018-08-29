@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "b31b85de-d604-49e5-91f6-50e17066e49e",
+		"name": "arex.io Pig Latin api",
+		"description": "# Translation Service\nThe idea of this test is to create a service that handles translations between two given\nlanguages.\nWe want to start by supporting translations from English to Pig Latin.\n## Pig Latin Language\nThe rules to translate from English to Pig Latin are the following:\nWords that start with a vowel (A, E, I, O, U) simply have \"WAY\" appended to the end\nof the word;\n- Words that start with a consonant have all consonant letters up to the first vowel\nmoved to the end of the word (as opposed to just the first consonant letter), and \"AY\"\nis appended.\n\t-\tIn this context a ‘y' in the middle of the word is counted as a vowel;\n\t-\tIn this context if the word starts with 'qu’ we consider that to be a single\nconsonant;\n- Translations should respect upper/lower case formatting;\n- Hyphenated words are treated as two words;\n- Words may consist of alphabetic characters only (A-Z and a-z);\n- All punctuation, numerals, symbols and whitespace are not modified;\n- Let's assume that there are no contractions in the English text;\n\n### Examples:\n|Original\t\t\t\t\t\t\t|Translated\n|-----------------|-----------------------------------------------------------\n|quiet\t\t\t\t\t\t\t\t|ietquay\n|yellow\t\t\t\t\t\t\t\t|ellowyay\n|style\t\t\t\t\t\t\t\t|ylestay\n|Challenge the status quo\t\t\t|Allengechay ethay atusstay oquay\n|Roses are red, violets are blue \t|Osesray areway edray, ioletsvay areway ueblay\n|He is 2 years old\t\t\t\t\t|Ehay isway 2 earsyay oldway\n|The design is state-of-the-art\t\t|Ethay esignday isway atestay-ofway-ethay-artway\n|An off-campus apartment \t\t\t|Anway offway-ampuscay apartmentwayDeliverables\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Translation",
+			"item": [
+				{
+					"name": "/POST api/v1/translate - All examples at once",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"quiet\\nyellow\\nstyle\\nChallenge the status quo\\nRoses are red, violets are blue\\nHe is 2 years old\\nThe design is state-of-the-art\\nAn off-campus apartment\\n\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - One of the example provided",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"The design is state-of-the-art\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - An example with malformed request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"text\": \"The design is state-of-the-art\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - An example with an empty text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - An example containg all upper case words",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"HELLO I am AWAY till the end of the month\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - An example containg mixed case words Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"GoOd MorNing everyBody\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - An example containg spanish punctuation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"¡hola! amigos, ¿que tal? (reference¹)\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - An example containg spanish punctuation and upper case letters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"¡Hola! amigos, ¿Que Tal? (reference¹)\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/POST api/v1/translate - An example containg english punctuation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1d4eeff-ef53-4749-8fd1-bfbcd650dc4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"textToTranslate\": \"Hello my friends!, How are you? (reference¹)\" }\n"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/GET api/v1/translate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83d5e55d-5092-4667-884e-89e1fab79850",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api/v1/translate",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"translate"
+							]
+						},
+						"description": "This request is a request that provides no text to translate and thus will return a status 400, Bad request and an error message"
+					},
+					"response": []
+				},
+				{
+					"name": "/GET api",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5cc11058-f56a-4f8e-b8ff-c856af01978e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{protocol}}://{{arex_domain}}/api",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{arex_domain}}"
+							],
+							"path": [
+								"api"
+							]
+						},
+						"description": "This request is a request that provides no text to translate and thus will return a status 400, Bad request and an error message"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1d85088b-a374-498f-8473-90e3f4624a69",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "27d52cc0-2e2b-45ab-b1f2-0384416f3db9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "21df3519-17f4-457a-863f-886fba3e3fe1",
+			"key": "arex_domain",
+			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"id": "603e4b3e-6bbd-439e-a7be-a91fc8861e86",
+			"key": "protocol",
+			"value": "http",
+			"type": "string"
+		}
+	]
+}
