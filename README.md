@@ -19,16 +19,17 @@ consonant;
 - Let's assume that there are no contractions in the English text;
 
 Examples:
-|Original|Translated
--------|-----------
-|quiet|ietquay
-|yellow|ellowyay
-|style|ylestay
-|Challenge the status quo|Allengechay ethay atusstay oquay
-|Roses are red, violets are blue|Osesray areway edray, ioletsvay areway ueblay
-|He is 2 years old|Ehay isway 2 earsyay oldway
-|The design is state-of-the-art|Ethay esignday isway atestay-ofway-ethay-artway
-|An off-campus apartment|Anway offway-ampuscay apartmentway
+
+| Original| Translated |
+| ------- | ----------- |
+| quiet | ietquay |
+| yellow | ellowyay |
+| style | ylestay |
+| Challenge the status quo | Allengechay ethay atusstay oquay |
+| Roses are red, violets are blue | Osesray areway edray, ioletsvay areway ueblay |
+| He is 2 years old | Ehay isway 2 earsyay oldway |
+| The design is state-of-the-art | Ethay esignday isway atestay-ofway-ethay-artway |
+| An off-campus apartment | Anway offway-ampuscay apartmentway |
 
 ## Getting Started
 
